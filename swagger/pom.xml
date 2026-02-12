@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.example</groupId>
+        <artifactId>diceusJava</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>swagger</artifactId>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <swagger.codegen>3.0.52</swagger.codegen>
+        <google.gson>2.8.6</google.gson>
+        <swagger-annotations>2.2.20</swagger-annotations>
+        <pet.package>org.pet</pet.package>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${google.gson}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger-annotations}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.swagger.codegen.v3</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>${swagger.codegen}</version>
+                <executions>
+                    <execution>
+                        <id>pet-api</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>https://petstore.swagger.io/v2/swagger.json</inputSpec>
+                            <output>${project.basedir}</output>
+                            <language>java</language>
+                            <library>resttemplate</library>
+                            <configOptions>
+                                <sourceFolder>src/main/java</sourceFolder>
+                            </configOptions>
+                            <apiPackage>${pet.package}.api</apiPackage>
+                            <modelPackage>${pet.package}.model</modelPackage>
+                            <invokerPackage>${pet.package}.invoker</invokerPackage>
+                            <groupId>diceus</groupId>
+                            <artifactId>pet-api</artifactId>
+                            <generateApiTests>false</generateApiTests>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <generateModelTests>false</generateModelTests>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <additionalProperties>hideGenerationTimestamp=true</additionalProperties>
+                            <ignoreFileOverride>${project.basedir}/.swagger-codegen-ignore</ignoreFileOverride>
+                        </configuration>
+                    </execution>
+                </executions>
+
+            </plugin>
+        </plugins>
+    </build>
+</project>

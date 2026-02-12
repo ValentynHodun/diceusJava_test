@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="UI Regression Suite" verbose="1" parallel="tests" thread-count="2">
+    <test name="Offers Test">
+        <classes>
+            <class name="insiderone.HomePageTests"/>
+            <class name="insiderone.QualityAssurancePageTests"/>
+        </classes>
+    </test>
+</suite>

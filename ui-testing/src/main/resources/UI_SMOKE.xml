@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="UI Smoke Suite" verbose="1" parallel="tests" thread-count="2">
+    <groups>
+        <run>
+            <include name="smoke"/>
+        </run>
+    </groups>
+
+    <test name="Offers Test">
+        <classes>
+            <class name="insiderone.HomePageTests"/>
+            <class name="insiderone.QualityAssurancePageTests"/>
+        </classes>
+    </test>
+</suite>
